@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>Controlling Water Moisture using Soil Sensor in Web Server</title>
+</head>
+<body class="statusColor">
+    <div class="container bg-info text-center rounded-2 p-3 mt-4 text-white">
+        <h1>Controlling Water Moisture using Soil Sensor in Web Servers</h1>
+    </div>
+
+    <div class="container">
+        <div class="row" style="border: 2px solid grey; padding: 20px 0;">
+            <div class="col-md-4 border-secondary" style="margin: auto;">
+                <h3>SOIL SENSOR</h3>
+                <h4 class="soilsensor">Water: </h4>
+                <h4 class="statussoil">Status: </h4>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    setInterval(function() {
+        $.get("/getData", function(data, status){
+            $(".soilsensor").text("Water Percentage: " + data + "%")
+            
+            if (data <= 40) {
+                $(".statussoil").text("Status: Please Water the Plants")
+                $(".statusColor").css("background-color", "red")
+            } else {
+                $(".statussoil").text("Status: Enough Water")
+                $(".statusColor").css("background-color", "#89cff0")
+            }
+        })
+    }, 3000)
+</script>
+</html>
+)===";
