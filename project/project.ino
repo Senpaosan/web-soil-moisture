@@ -6,8 +6,8 @@
 #define soil A0
 #define buz D7
 
-const String ssid = "KODING next Citraland";
-const String password = "FutureCoders!";
+const String ssid = "xxxxxxxxxxx";
+const String password = "xxxxxxxxxxxx";
 
 ESP8266WebServer server(80);
 
